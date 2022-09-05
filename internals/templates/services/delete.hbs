@@ -1,0 +1,29 @@
+import { injectable, inject } from 'tsyringe';
+
+import { AppError } from '@shared/errors/AppError';
+
+import { {{getEntityNameSingularized entity_reference}} } from '../app/typeorm/entities/{{getEntityNameSingularized entity_reference}}';
+import { IDelete{{getEntityNameSingularized entity_reference}} } from '../contracts/I{{getEntityNameSingularized entity_reference}}DTO';
+import { I{{getEntityNamePluralized entity_reference}}Repository } from '../repositories/I{{getEntityNamePluralized entity_reference}}Repository';
+
+@injectable()
+class Delete{{getEntityNameSingularized entity_reference}}Service {
+  constructor(
+    @inject('{{getEntityNamePluralized entity_reference}}Repository')
+    private {{fromServicesGetEntityNamePluralizedVariable entity_reference}}Repository: I{{getEntityNamePluralized entity_reference}}Repository,
+  ) {}
+
+  public async execute({ id }: IDelete{{getEntityNameSingularized entity_reference}}): Promise<{{getEntityNameSingularized entity_reference}}> {
+    const founded{{getEntityNameSingularized entity_reference}} = await this.{{fromServicesGetEntityNamePluralizedVariable entity_reference}}Repository.findById({ id });
+
+    if (!founded{{getEntityNameSingularized entity_reference}}) {
+      throw new AppError('{{getEntityNameSingularized entity_reference}} not found!', 404);
+    }
+
+    await this.{{fromServicesGetEntityNamePluralizedVariable entity_reference}}Repository.delete(id);
+
+    return founded{{getEntityNameSingularized entity_reference}};
+  }
+}
+
+export { Delete{{getEntityNameSingularized entity_reference}}Service };

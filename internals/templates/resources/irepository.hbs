@@ -1,0 +1,6 @@
+import { PrimitiveProperties } from '@shared/contracts/IGeneric';
+import { IBaseRepository } from '@shared/infra/typeorm/repositories/IBaseRepository';
+
+import { {{properCase entity_name}} } from '../app/typeorm/entities/{{properCase entity_name}}';
+
+export type I{{fromResourcesGetPluralized entity_name}}Repository = IBaseRepository<PrimitiveProperties<{{properCase entity_name}}>>;

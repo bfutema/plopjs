@@ -1,0 +1,26 @@
+import { instanceToInstance } from 'class-transformer';
+import { Request, Response } from 'express';
+import { container } from 'tsyringe';
+
+/* CREATE_IMPORT */
+/* DELETE_IMPORT */
+/* LIST_IMPORT */
+/* SHOW_IMPORT */
+/* UPDATE_IMPORT */
+import { HttpQuery } from '@shared/helpers/HttpQueryHelper';
+
+class {{fromResourcesGetPluralized entity_name}}Controller {
+  /* LIST */
+
+  /* CREATE */
+
+  /* SHOW */
+
+  /* UPDATE */
+
+  /* DELETE */
+}
+
+const INSTANCE = new {{fromResourcesGetPluralized entity_name}}Controller();
+
+export { INSTANCE as {{fromResourcesGetPluralized entity_name}}Controller };

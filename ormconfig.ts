@@ -1,0 +1,23 @@
+module.exports = [
+  {
+    name: 'default',
+    type: process.env.MAIN_DB_TYPE,
+    host: process.env.MAIN_DB_HOST,
+    port: process.env.MAIN_DB_PORT,
+    username: process.env.MAIN_DB_USER,
+    password: process.env.MAIN_DB_PASS,
+    database: process.env.MAIN_DATABASE,
+    entities: [`./${process.env.ENTITIES_ROOT_PATH}/modules/**/app/typeorm/entities/*.${process.env.ENTITIES_EXTENSION}`],
+    migrations: [`./${process.env.ENTITIES_ROOT_PATH}/shared/infra/typeorm/migrations/*.${process.env.ENTITIES_EXTENSION}`],
+    seeds: [`./${process.env.ENTITIES_ROOT_PATH}/shared/infra/typeorm/seeds/*.${process.env.ENTITIES_EXTENSION}`],
+    factories: [`./${process.env.ENTITIES_ROOT_PATH}/shared/infra/typeorm/factories/*.${process.env.ENTITIES_EXTENSION}`],
+    cli: { migrationsDir: `./${process.env.ENTITIES_ROOT_PATH}/shared/infra/typeorm/migrations` },
+    options: { enableArithAbort: true },
+    autoLoadEntities: true,
+    logging: false,
+    connectionLimit: 1000,
+    connectTimeout: 60 * 60 * 1000,
+    acquireTimeout: 60 * 60 * 1000,
+    timeout: 100000,
+  },
+];

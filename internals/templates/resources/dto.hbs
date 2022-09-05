@@ -1,0 +1,55 @@
+import {
+  NonFunctionProperties,
+  ObjectPropertyNames,
+  PrimitiveProperties,
+} from '@shared/contracts/IGeneric';
+import { IQuery } from '@shared/helpers/HttpQueryHelper';
+
+import { {{ properCase entity_name }} } from '../app/typeorm/entities/{{ properCase entity_name }}';
+
+/**
+ * Model: {{ properCase entity_name }}
+ */
+export type I{{ properCase entity_name }} = NonFunctionProperties<{{ properCase entity_name }}>;
+
+/**
+ * Method: POST
+ * Create {{ properCase entity_name }}
+ */
+export type ICreate{{ properCase entity_name }} = PrimitiveProperties<
+  Omit<I{{ properCase entity_name }}, 'id' | 'created_at' | 'updated_at' | 'deleted_at'>
+>;
+
+/**
+ * Method: GET
+ * LIST {{ properCase entity_name }}
+ */
+export type IList{{ properCase entity_name }} = {
+  query?: IQuery;
+  relations?: ObjectPropertyNames<I{{ properCase entity_name }}>[] | string[];
+};
+
+/**
+ * Method: GET
+ * SHOW {{ properCase entity_name }}
+ */
+export type IShow{{ properCase entity_name }} = Pick<I{{ properCase entity_name }}, 'id'> & {
+  relations?: ObjectPropertyNames<I{{ properCase entity_name }}>[] | string[];
+};
+
+/**
+ * Method: PUT
+ * Update {{ properCase entity_name }}
+ */
+export type IUpdate{{ properCase entity_name }} = ICreate{{ properCase entity_name }} & { id: number };
+
+/**
+ * Method: PATCH
+ * Update {{ properCase entity_name }}
+ */
+export type IPartialUpdate{{ properCase entity_name }} = Partial<IUpdate{{ properCase entity_name }}>;
+
+/**
+ * DELETE {{ properCase entity_name }}
+ */
+export type IDelete{{ properCase entity_name }} = Pick<IUpdate{{ properCase entity_name }}, 'id'>;

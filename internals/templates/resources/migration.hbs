@@ -1,0 +1,41 @@
+import { MigrationInterface, QueryRunner, Table } from 'typeorm';
+
+export class {{ migration_name }} implements MigrationInterface {
+  public async up(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.createTable(
+      new Table({
+        name: '{{ snakeCase table_name }}',
+        columns: [
+          {
+            name: 'id',
+            type: 'integer',
+            isPrimary: true,
+            isGenerated: true,
+            generationStrategy: 'increment',
+          },
+          /* FIELDS */
+          {
+            name: 'created_at',
+            type: 'timestamp',
+            isNullable: false,
+            default: 'now()',
+          },
+          {
+            name: 'updated_at',
+            type: 'timestamp',
+            isNullable: true,
+          },
+          {
+            name: 'deleted_at',
+            type: 'timestamp',
+            isNullable: true,
+          },
+        ],
+      }),
+    );
+  }
+
+  public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.dropTable('{{ snakeCase table_name }}');
+  }
+}

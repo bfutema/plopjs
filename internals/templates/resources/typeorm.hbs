@@ -1,0 +1,31 @@
+import {
+  Entity,
+  BaseEntity,
+  CreateDateColumn,
+  UpdateDateColumn,
+  DeleteDateColumn,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+
+@Entity('{{ snakeCase table_name }}')
+class {{ properCase entity_name }} extends BaseEntity {
+  @PrimaryGeneratedColumn('increment', { type: 'integer' })
+  id?: number;
+
+  /* FIELDS */
+
+  @CreateDateColumn({ type: 'timestamp' })
+  created_at?: Date;
+
+  @UpdateDateColumn({ type: 'timestamp' })
+  updated_at?: Date;
+
+  @DeleteDateColumn({ type: 'timestamp' })
+  deleted_at?: Date;
+
+  /**
+   * RELATIONS
+   */
+}
+
+export { {{ properCase entity_name }} };

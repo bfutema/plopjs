@@ -1,0 +1,10 @@
+import { I{{getEntityNamePluralized entity_reference}}Repository } from '@modules/{{getModule entity_reference}}/repositories/I{{getEntityNamePluralized entity_reference}}Repository';
+import { BaseRepository } from '@shared/infra/typeorm/repositories/BaseRepository';
+
+import { {{getEntityNameSingularized entity_reference}} } from '../entities/{{getEntityNameSingularized entity_reference}}';
+
+class {{getEntityNamePluralized entity_reference}}Repository
+  extends BaseRepository<{{getEntityNameSingularized entity_reference}}>
+  implements I{{getEntityNamePluralized entity_reference}}Repository {}
+
+export { {{getEntityNamePluralized entity_reference}}Repository };

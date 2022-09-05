@@ -1,0 +1,55 @@
+import {
+  NonFunctionProperties,
+  ObjectPropertyNames,
+  PrimitiveProperties,
+} from '@shared/contracts/IGeneric';
+import { IQuery } from '@shared/helpers/HttpQueryHelper';
+
+import { {{getEntityName entity_reference}} } from '../app/typeorm/entities/{{getEntityName entity_reference}}';
+
+/**
+ * Model: {{getEntityName entity_reference}}
+ */
+export type I{{getEntityName entity_reference}} = NonFunctionProperties<{{getEntityName entity_reference}}>;
+
+/**
+ * Method: POST
+ * Create {{getEntityName entity_reference}}
+ */
+export type ICreate{{getEntityName entity_reference}} = PrimitiveProperties<
+  Omit<I{{getEntityName entity_reference}}, 'id' | 'created_at' | 'updated_at' | 'deleted_at'>
+>;
+
+/**
+ * Method: GET
+ * LIST {{getEntityName entity_reference}}
+ */
+export type IList{{getEntityName entity_reference}} = {
+  query?: IQuery;
+  relations?: ObjectPropertyNames<I{{getEntityName entity_reference}}>[] | string[];
+};
+
+/**
+ * Method: GET
+ * SHOW {{getEntityName entity_reference}}
+ */
+export type IShow{{getEntityName entity_reference}} = Pick<I{{getEntityName entity_reference}}, 'id'> & {
+  relations?: ObjectPropertyNames<I{{getEntityName entity_reference}}>[] | string[];
+};
+
+/**
+ * Method: PUT
+ * Update {{getEntityName entity_reference}}
+ */
+export type IUpdate{{getEntityName entity_reference}} = ICreate{{getEntityName entity_reference}} & { id: number };
+
+/**
+ * Method: PATCH
+ * Update {{getEntityName entity_reference}}
+ */
+export type IPartialUpdate{{getEntityName entity_reference}} = Partial<IUpdate{{getEntityName entity_reference}}>;
+
+/**
+ * DELETE {{getEntityName entity_reference}}
+ */
+export type IDelete{{getEntityName entity_reference}} = Pick<IUpdate{{getEntityName entity_reference}}, 'id'>;

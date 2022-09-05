@@ -1,0 +1,10 @@
+import { I{{fromResourcesGetPluralized entity_name}}Repository } from '@modules/{{new_module_name}}/repositories/I{{fromResourcesGetPluralized entity_name}}Repository';
+import { BaseRepository } from '@shared/infra/typeorm/repositories/BaseRepository';
+
+import { {{properCase entity_name}} } from '../entities/{{properCase entity_name}}';
+
+class {{fromResourcesGetPluralized entity_name}}Repository
+  extends BaseRepository<{{properCase entity_name}}>
+  implements I{{fromResourcesGetPluralized entity_name}}Repository {}
+
+export { {{fromResourcesGetPluralized entity_name}}Repository };

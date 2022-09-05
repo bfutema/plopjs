@@ -1,0 +1,23 @@
+import { injectable, inject } from 'tsyringe';
+
+import { {{properCase entity_name}} } from '../app/typeorm/entities/{{properCase entity_name}}';
+import { ICreate{{properCase entity_name}} } from '../contracts/I{{properCase entity_name}}DTO';
+import { I{{fromResourcesGetPluralized entity_name}}Repository } from '../repositories/I{{fromResourcesGetPluralized entity_name}}Repository';
+
+@injectable()
+class Create{{properCase entity_name}}Service {
+  constructor(
+    @inject('{{fromResourcesGetPluralized entity_name}}Repository')
+    private {{fromResourcesGetEntityNamePluralizedVariable entity_name}}Repository: I{{fromResourcesGetPluralized entity_name}}Repository,
+  ) {}
+
+  public async execute(data: ICreate{{properCase entity_name}}): Promise<{{properCase entity_name}}> {
+    const { id } = await this.{{fromResourcesGetEntityNamePluralizedVariable entity_name}}Repository.create(data);
+
+    const created{{properCase entity_name}} = await this.{{fromResourcesGetEntityNamePluralizedVariable entity_name}}Repository.findById({ id });
+
+    return created{{properCase entity_name}};
+  }
+}
+
+export { Create{{properCase entity_name}}Service };
